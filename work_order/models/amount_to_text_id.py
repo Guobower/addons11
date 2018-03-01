@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-from odoo import api, fields, models, _
-
 to_19_id = ('nol', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam',
             'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas', 'dua belas', 'tiga belas',
             'empat belas', 'lima belas', 'enam belas', 'tujuh belas', 'delapan belas', 'sembilan belas')
 tens_id = (
-'dua puluh', 'tiga puluh', 'empat puluh', 'lima puluh', 'enam puluh', 'tujuh puluh', 'delapan puluh', 'sembilan puluh')
+    'dua puluh', 'tiga puluh', 'empat puluh', 'lima puluh', 'enam puluh', 'tujuh puluh', 'delapan puluh',
+    'sembilan puluh')
 denom_id = ('', 'ribu',
             'juta', 'miliar', 'biliun', 'triliun', 'quadriliun',
             'ribu', 'juta', 'billion', 'trillion', 'quadrillion',
@@ -38,11 +36,11 @@ def _convert_nnn_id(val):
     if rem == 1:
         word = 'seratus'
         if mod > 0:
-            word = word + ' '
+            word += ' '
     elif rem > 1:
         word = to_19_id[rem] + ' ratus'
         if mod > 0:
-            word = word + ' '
+            word += ' '
     if mod > 0:
         word = word + _convert_nn_id(mod)
     return word
@@ -66,16 +64,10 @@ def id_number(val):
             return ret
 
 
-def amount_to_text_id(numbers, currency):
+def amount_to_text_id_call(numbers):
     number = '%.2f' % numbers
-    units_name = currency
     liste = str(number).split('.')
     start_word = id_number(abs(int(liste[0])))
-    end_word = id_number(int(liste[1]))
-    cents_number = int(liste[1])
-    cents_name = (cents_number > 1) and ' sen' or ' sen'
     final_result = start_word + ' ' + ' rupiah'
     final_result = final_result[:1].upper() + final_result[1:]
-    # final_result = units_name + ' ' + start_word + ' ' + end_word + ' ' + cents_name
     return final_result
-
