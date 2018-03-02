@@ -4,6 +4,7 @@ import amount_to_text_id
 
 
 class purchase_order(models.Model):
+    _name = "work.order"
     _inherit = "purchase.order"
 
     @api.one

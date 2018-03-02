@@ -1,0 +1,21 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_purchase_order_spk" model="ir.sequence">
+            <field name="name">Purchase Order SPK Sequence</field>
+            <field name="code">purchase.order.spk</field>
+            <field name="suffix">/SPK/INT/PCH-JUVISK/%(rmonth)s/%(y)s </field>
+            <field eval="4" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+
+        <record id="seq_purchase_order" model="ir.sequence">
+            <field name="name">Purchase Order Sequence</field>
+            <field name="code">purchase.order</field>
+            <field name="suffix">/PO/INT/PCH-JUVISK/%(rmonth)s/%(y)s </field>
+            <field eval="4" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+    </data>
+</odoo>
