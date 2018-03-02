@@ -3,8 +3,7 @@ from odoo import models, fields, api
 import amount_to_text_id
 
 
-class purchase_order(models.Model):
-    _name = "work.order"
+class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     @api.one
