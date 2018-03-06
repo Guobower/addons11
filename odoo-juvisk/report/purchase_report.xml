@@ -3,39 +3,124 @@
 
     <!--inherit purchase report-->
     <template id="report_purchaseorder_document_inherit" inherit_id="purchase.report_purchaseorder_document">
-        <xpath expr="//p[@t-field='o.notes']" position="after">
+        <!--<div class="row mt32 mb32" position="after">-->
+            <!--<div class="row mt32 mb32">-->
+                <!--<div t-if="o.origin" class="col-xs-3">-->
+                    <!--<strong>Purchase Requisition Reference :</strong>-->
+                    <!--<p t-field="o.origin"/>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
-                <div class="row" style="margin-top:100px">
+        <h2 t-if="o.state != 'draft'" position="replace">
+            <h2 t-if="o.state != 'draft'">Purchase Order #<span t-field="o.name"/></h2>
+        </h2>
+        <div t-if="o.date_order" class="col-xs-3" position="after">
+            <div t-if="o.origin" class="col-xs-3">
+                <strong>PR Reference :</strong>
+                <p t-field="o.origin"/>
+            </div>
+        </div>
 
+        <div class="col-xs-4 pull-right" position="before">
+            <div class="col-xs-8">
+                <strong>Terbilang</strong>
+                <p t-field="o.amount_to_text"/>
+            </div>
+        </div>
+
+        <p t-field="o.notes" position="replace">
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        <div class="col-xs-12">
+                            <strong>Notification</strong>
+                            <p t-field="o.notes"/>
+                            <strong>
+                                <p>
+                                Invoice dan Surat Jalan Asli harap dikirim ke bagian "Account Payable" PT Prasetia Juvisk Sinergi
+                                dengan mencatumkan : "Perihal : TAGIHAN", pada saat penagihan atau setelah terima PO
+                                </p>
+                            </strong>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-bordered">
+                 <tr>
+                    <td>
+                        <div class="col-xs-12">
+                            <strong>Alamat Faktur Pajak</strong>
+                            <p>
+                                PT Prasetia Juvisk Sinergi, NPWP : 82.391.097.1-075.000
+                                JL. ANTARA GD ARUNA LT. 3 NO. 47 PASAR BARU SAWAH BESAR JAKARTA PUSAT DKI JAKARTA
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!--<div class="row">-->
+                <!--<div class="col-xs-12">-->
+                    <!--<strong>Notification</strong>-->
+                    <!--<p t-field="o.notes"/>-->
+                    <!--<strong>-->
+                        <!--<p>-->
+                        <!--Invoice dan Surat Jalan Asli harap dikirim ke bagian "Account Payable" PT Prasetia Juvisk Sinergi-->
+                        <!--dengan mencatumkan : "Perihal : TAGIHAN", pada saat penagihan atau setelah terima PO-->
+                        <!--</p>-->
+                    <!--</strong>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12">-->
+                    <!--<strong>Alamat Faktur Pajak</strong>-->
+                    <!--<p>-->
+                        <!--PT Prasetia Juvisk Sinergi, NPWP : 82.391.097.1-075.000-->
+                        <!--JL. ANTARA GD ARUNA LT. 3 NO. 47 PASAR BARU SAWAH BESAR JAKARTA PUSAT DKI JAKARTA-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="row" style="margin-top:70px">
                 <div class="col-xs-3">
                     <table class="table table-condensed">
                         <tr>
-                             <td style="border:0">Created by :</td>
+                             <td style="border:0">Confirmed by Supplier</td>
                         </tr>
                         <tr>
-                            <td style="text-align:center"><!--<img t-attf-src="data:image/*;base64,{{o.create_uid.hand_signature}}" style="width:80px;height80px"/>--></td>
+                             <td style="border:0">Date : </td>
                         </tr>
-                        <tr class="border-black">
-                            <td ><span t-field="o.create_uid.name" /></td>
+                        <tr>
+                            <td style="text-align:center; border:0" height="80px"><!--<img t-attf-src="data:image/*;base64,{{o.create_uid.hand_signature}}" style="width:80px;height80px"/>--></td>
+                        </tr>
+                        <tr>
+                            <td style="border:0" class="text-center">
+                                <!--<span t-field="o.create_uid.name" />-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:0">* Please Refax after Receive</td>
                         </tr>
                     </table>
                 </div>
-                <!--<div class="col-xs-3">
+                <div class="col-xs-3 pull-right">
                     <table class="table table-condensed">
                         <tr>
-                             <td style="border:0">Validated by :</td>
+                             <td style="border:0">Approved by, </td>
                         </tr>
                         <tr>
-                            <td style="text-align:center"><img t-attf-src="data:image/*;base64,{{o.validate_by.hand_signature}}" style="width:80px;height80px"/></td>
+                             <td style="border:0">Date : </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center; border:0" height="80px"><!--<img t-attf-src="data:image/*;base64,{{o.create_uid.hand_signature}}" style="width:80px;height80px"/>--></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center" style="border:0">ARYA SETIADHARMA</td>
                         </tr>
                         <tr class="border-black">
-                            <td ><span t-field="o.validate_by.name" /></td>
+                            <td class="text-center">Direktur</td>
                         </tr>
                     </table>
-                </div> -->
+                </div>
             </div>
-
-        </xpath>
+        </p>
     </template>
 
 </odoo>
