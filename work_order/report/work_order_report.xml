@@ -4,7 +4,7 @@
             string="Surat Perintah Kerja"
             id="action_report_work_order"
             model="purchase.order"
-            report_type="qweb-html"
+            report_type="qweb-pdf"
             name="work_order.report_workorder"
             file="work_order.report_workorder"
             print_report_name="'SPK - %s' % (object.name)"
